@@ -1,0 +1,46 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  	xmlns:p="http://www.springframework.org/schema/p"
+  	xmlns:util="http://www.springframework.org/schema/util"
+  	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+        
+  	<bean
+	    dependency-check="none"
+	    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+	    p:systemPropertiesMode="2"
+	    p:ignoreUnresolvablePlaceholders="true"
+	    p:placeholderPrefix="$SessionFactory{">
+	    <property name="properties">
+	      	<value>hibernateProperties=hibernate.properties</value>
+	    </property>
+  	</bean>
+  
+  	<bean id="academiaSessionFactory"
+    	class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+    	p:dataSource-ref="dataSource">
+    	
+    	<property name="hibernateProperties">
+      		<util:properties location="classpath:$SessionFactory{hibernateProperties}"/>
+    	</property>
+    	
+    	<property name="namingStrategy">
+			<bean class="org.hibernate.cfg.ImprovedNamingStrategy"/>
+    	</property>
+    	
+    	<property name="annotatedPackages">
+			<list>
+	        	<value>ar.com.academia.bean</value>
+	      	</list>
+    	</property>
+    
+    	<property name="annotatedClasses">
+      		<list>
+				<value>ar.com.academia.bean.Usuario</value>		
+      		</list>
+    	</property>
+  	</bean>
+</beans>

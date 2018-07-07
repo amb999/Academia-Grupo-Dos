@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  	xmlns:p="http://www.springframework.org/schema/p"
+  	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="loginBO"
+    	class="ar.com.academia.bo.impl.LoginBOImpl"
+    	p:usuarioDAO-ref="usuarioDAO"/>	
+    	
+    	
+    <bean id="pacienteBO"
+    	class="ar.com.academia.bo.impl.PacienteBOImpl"
+    	p:pacienteDAO-ref="pacienteDAO"/>	
+    	
+    <bean id="turnoBO"
+    	class="ar.com.academia.bo.impl.TurnoBOImpl"
+    	p:turnoDAO-ref="turnoDAO"/>			
+</beans>

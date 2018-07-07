@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+  	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  	xmlns:p="http://www.springframework.org/schema/p"
+  	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+  	<description>
+    	Definiciones de actions para el modulo academia
+  	</description>
+  	
+	<bean
+    	name="/loginAction"
+	    class="ar.com.academia.action.LoginAction"
+	    scope="prototype"
+	    p:loginBO-ref="loginBO"/>
+	    
+	 <bean
+	     name="/pacienteAction"
+	     class="ar.com.academia.action.PacienteAction"
+	     scope="prototype"
+	     p:pacienteBO-ref="pacienteBO"/>
+	 <bean
+	     name="/turnoAction"
+	     class="ar.com.academia.action.TurnoAction"
+	     scope="prototype"
+	     p:turnoBO-ref="turnoBO"/>       
+</beans>
